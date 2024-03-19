@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Tracker</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+    .navbar-custom {
+        background-color: #000000; /* Warna latar belakang navbar hitam */
+        color: #ffffff; /* Warna teks pada navbar putih */
+    }
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom">
+        <a class="navbar-brand" href="#">Hello, <span id="userName"></span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="main.html">Main</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="income.html">Income</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="outcome.html">Outcome</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        </button>
+        
+    
+<div class="container">
+    <h3>Your Income</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">Transaction Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" id="transactionName" class="form-control mb-2 animated fadeIn">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Transaction Nominal</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="transactionNominal" class="form-control mb-2 animated fadeIn">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Transaction Type</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Text input with segmenteddropdown button">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Makan</a>
+                                <a class="dropdown-item" href="#">Main</a>
+                                <a class="dropdown-item" href="#">Edukasi</a>
+                                <a class="dropdown-item" href="#">Belanja</a>
+                                <a class="dropdown-item" href="#">Lainnya</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary animated fadeIn" onclick="validateAndSubmit()">Submit</button>
+</div>
+
+<script>
+    // Retrieve user's name from localStorage
+var userName = localStorage.getItem("userName");
+if(userName !== null) {
+    document.getElementById("userName").innerText = userName; // Display user's name in the navbar
+} else {
+    // If user's name is not found, redirect back to index.html
+    window.location.href = "index.html";
+}
+function validateAndSubmit() {
+    var transactionName = document.getElementById("transactionName").value;
+    var transactionNominal = document.getElementById("transactionNominal").value;
+    var transactionType = document.querySelector(".dropdown-menu .dropdown-item.active");
+
+    if (transactionName.trim() === "" || transactionNominal.trim() === "" || !transactionType) {
+        alert("Transaksi belum selesai, silakan lengkapi formulir!");
+    } else {
+        alert("Transaksi sukses!");
+        // Reset form after successful submission (optional)
+        document.getElementById("transactionName").value = "";
+        document.getElementById("transactionNominal").value = "";
+        $('.dropdown-menu a').removeClass('active');
+    }
+}
+
+$(document).ready(function() {
+    $('.dropdown-menu a').click(function() {
+        $(this).parents('.input-group-append').find('.btn').html($(this).text() + ' <span class="caret"></span>');
+        $(this).parents('.dropdown-menu').find('a').removeClass('active');
+        $(this).addClass('active');
+    });
+});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Tracker</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link rel="stylesheet" href="style.css" />
+<style>
+    .navbar-custom {
+        background-color: #000000; /* Warna latar belakang navbar hitam */
+        color: #ffffff; /* Warna teks pada navbar putih */
+    }
+</style>
+</head>
+
+<body>
+ 
+<div class="container">
+    <h3>Money Tracker</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">Input your name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" id="modalnameInput" class="form-control mb-2 animated fadeIn" placeholder="Name">
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary animated fadeIn" onclick="saveUserData()">Submit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+function saveUserData() {
+    var userName = document.getElementById("modalnameInput").value;
+    if(userName.trim() !== "") { // Make sure the input is not empty
+        // Save the user's name to localStorage or sessionStorage for later use if needed
+        // For now, we'll just redirect the user to another page
+        localStorage.setItem("userName", userName); // Save user's name to localStorage
+        window.location.href = "main.page.html"; // Change the URL to the URL of your main_page.html
+    } else {
+        alert("Please enter your name.");
+    }
+}
+</script>
+
+</body>
+</html>
+
+
