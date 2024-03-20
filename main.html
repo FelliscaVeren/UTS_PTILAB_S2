@@ -4,181 +4,81 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Welcome Everyone</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <style>
     .navbar-custom {
-        background-color: #000000; /* Warna latar belakang navbar hitam */
-        color: #ffffff; /* Warna teks pada navbar putih */
+        background-color: #000000;
+        color: #ffffff;
     }
-    /* Some basic styling */
-  .container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    display: flex;
-    justify-content: space-between;
-  }
-  .box {
-    width: 45%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-  }
-  .box h3 {
-    margin-top: 0;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  th, td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-  }
-  .income {
-    background-color: lightgreen;
-    cursor: pointer; /* Add cursor pointer for clickable elements */
-  }
-  .outcome {
-    background-color: #ffcccc;
-    cursor: pointer; /* Add cursor pointer for clickable elements */
-  }
-
-  .money-img {
-    width: 50px; /* Lebar gambar */
-    height: auto; /* Tinggi gambar akan menyesuaikan proporsi aslinya */
-    float: left; /* Membuat gambar berada di sebelah kiri */
-    margin-right: 10px; /* Memberi sedikit ruang di sebelah kanan gambar */
-}
+    .container {
+        padding: 20px;
+    }
+    .box {
+        margin-bottom: 20px;
+    }
+    .money-img {
+        width: 50px;
+        height: auto;
+        float: left;
+        margin-right: 10px;
+    }
 </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark navbar-custom">
-        <div class="money">
-            <img src="images/money.png" class="money-img">
-        </div>
-        <a class="navbar-brand" href="#">Hello, <span id="userName"></span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="main.html">Main</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="income.html">Income</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="outcome.html">Outcome</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About Us</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-        </button>
+<nav class="navbar navbar-expand-md navbar-dark navbar-custom">
+    <div class="money">
+        <img src="images/money.png" class="money-img">
+    </div>
+    <a class="navbar-brand" href="#">Hello, <span id="userName"></span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="main.html">Main</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="income.html">Income</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="outcome.html">Outcome</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <div class="container">
-  <div class="box">
-    <h3>Transaction Details</h3>
-    <table id="transactionTable">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Type</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody id="transactionDetails">
-        <!-- Transaction details will be dynamically added here -->
-      </tbody>
-    </table>
-  </div>
-
-  <div class="box">
-    <h3>Balance</h3>
-    <div id="balanceDetails">
-      <!-- User's balance will be dynamically added here -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box">
+                <h3>Transaction Details</h3>
+                <table id="transactionTable" class="table">
+                    <thead>
+                    <tr>
+                        <th>Transaction Name</th>
+                        <th>Transaction Nominal</th>
+                        <th>Transaction Type</th>
+                    </tr>
+                    </thead>
+                    <tbody id="transactionDetails">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box">
+                <h3>Balance</h3>
+                <div id="balanceDetails"></div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<script>
-    // Retrieve user's name from localStorage
-var userName = localStorage.getItem("userName");
-if(userName !== null) {
-    document.getElementById("userName").innerText = userName; // Display user's name in the navbar
-} else {
-    // If user's name is not found, redirect back to index.html
-    window.location.href = "index.html";
-}
-$(document).ready(function(){
-  // Function to update transaction details and balance
-  function updateDetails() {
-    var income = parseFloat($("#incomeInput").val()) || 0; // Get income input, default to 0 if empty or invalid
-    var outcome = parseFloat($("#outcomeInput").val()) || 0; // Get outcome input, default to 0 if empty or invalid
-
-    // Clear previous transactions
-    $("#transactionDetails").empty();
-
-    // Add new transactions
-    if (income > 0) {
-      $("#transactionDetails").append("<tr class='income'><td>" + getDate() + "</td><td class='incomeLink'>Income</td><td>Rp " + income + "</td></tr>");
-    }
-    if (outcome > 0) {
-      $("#transactionDetails").append("<tr class='outcome'><td>" + getDate() + "</td><td class='outcomeLink'>Outcome</td><td>Rp " + outcome + "</td></tr>");
-    }
-
-    // Calculate total income and total outcome
-    var totalIncome = income;
-    var totalOutcome = outcome;
-
-    // Calculate user's balance
-    var balance = totalIncome - totalOutcome;
-    $("#balanceDetails").html("<p>Balance: Rp " + balance + "</p>");
-  }
-
-  // Get current date in "YYYY-MM-DD" format
-  function getDate() {
-    var today = new Date();
-    var yyyy = today.getFullYear();
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var dd = String(today.getDate()).padStart(2, '0');
-    return yyyy + '-' + mm + '-' + dd;
-  }
-
-  // Update details on input change
-  $("#incomeInput, #outcomeInput").on("input", function() {
-    updateDetails();
-  });
-
-  // Redirect to income page when clicking on income link
-  $(document).on("click", ".incomeLink", function() {
-    window.location.href = "income_page.html";
-  });
-
-  // Redirect to outcome page when clicking on outcome link
-  $(document).on("click", ".outcomeLink", function() {
-    window.location.href = "outcome_page.html";
-  });
-
-  // Initial update
-  updateDetails();
-});
-</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

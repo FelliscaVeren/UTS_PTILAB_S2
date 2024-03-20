@@ -5,20 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Money Tracker</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <style>
-    .navbar-custom {
-        background-color: #000000; /* Warna latar belakang navbar hitam */
-        color: #ffffff; /* Warna teks pada navbar putih */
-    }
-
-    /* Some basic styling */
   .about-us {
-    width: 80%;
-    margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -39,9 +27,10 @@
   }
 
   .about-us img {
-    width: 300px;
-    height: 450px;
-    border-radius: 15%;
+    width: 250px; 
+    height: 300px; 
+    border-radius: 15%; 
+    transition: transform 0.3s ease-in-out; 
   }
 
   .about-us p {
@@ -49,12 +38,21 @@
     font-family: 'Times New Roman', Times, serif;
   }
 
+  .about-us img:hover {
+    transform: scale(1.1); 
+  }
+
+  .navbar-custom {
+    background-color: #000000; 
+    color: #ffffff; 
+  }
+
   .money-img {
-    width: 50px; /* Lebar gambar */
-    height: auto; /* Tinggi gambar akan menyesuaikan proporsi aslinya */
-    float: left; /* Membuat gambar berada di sebelah kiri */
-    margin-right: 10px; /* Memberi sedikit ruang di sebelah kanan gambar */
-}
+    width: 50px; 
+    height: auto; 
+    float: left; 
+    margin-right: 10px; 
+  }
 </style>
 </head>
 
@@ -63,7 +61,7 @@
         <div class="money">
             <img src="images/money.png" class="money-img">
         </div>
-        <a class="navbar-brand" href="#">Hello, <span id="userName"></span></a>
+        <a class="navbar-brand" href="main.html">Hello, <span id="userName"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -84,55 +82,57 @@
             </ul>
         </div>
     </nav>
-        </button>
 
-<div class="about-us">
-  <h2>About Us</h2>
-  <p>Selamat datang, perkenalkan kami dari GPT 4.0.</p>
-  <p>Salam kenal yaa.</p>
-  <button id="toggleDetails">Show More</button>
-  <div id="moreDetails" style="display: none;">
-    <h3>Our History</h3>
-    <p>Intinya kita kerja bareng semenjak UTS buat project.</p>
-    <h3>Our Mission</h3>
-    <p>Mendapat nilai yg bagus supaya usaha kami lembur tidak sia-sia</p>
-    <h3>Our Team</h3>
-    <p>Part of GPT 4.0</p>
-    <img src="images/dev.jpeg">
-    <p>Ketua : Devin Wongosari</p>
-    <img src="images/drey.jpeg">
-    <p>Anggota : Audrey Christabelle Hakim</p>
-    <img src="images/ren.jpeg">
-    <p>Anggota : Fellisca Veren</p>
-    <img src="images/ry.jpeg">
-    <p>Anggota : Ryann Chandiari</p>
-    <h3>Sekian dari kami, see you!</h3>
+<div class="container">
+  <div class="about-us text-center mt-1">
+    <h2>About Us</h2>
+    <p>Welcome, perkenalkan team kami untuk project ini!!</p>
+    <p>Sangat senang berjumpa kalian!</p>
+    <button id="toggleDetails" class="btn btn-primary">Show More</button>
+    <div id="moreDetails" style="display: none;">
+      <h3><br>Our History</h3>
+      <p>Sejak hari pertama dikasih tau, UTS PTI akan butuh kelompok dan semua orang mulai mencari teman seperjuangannya di UTS semester 2.
+        Kami berkumpul dan memutuskan untuk membuat kelompok bersama, and now we're here !!
+      </p>
+      <h3>Our Mission</h3>
+      <p>Do our best and let God do the rest.</p>
+      <h3>Meet Us</h3>
+      <p>Part of GPT 4.0</p>
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-3">
+          <img src="images/dev.jpeg" alt="Ketua" class="img-fluid">
+          <p><br>Devin Wongosari / 00000093438</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <img src="images/drey.jpeg" alt="Anggota" class="img-fluid">
+          <p><br>Audrey Christabelle Hakim / 00000093142</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <img src="images/ren.jpeg" alt="Anggota" class="img-fluid">
+          <p><br>Fellisca Veren / 00000092385</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <img src="images/ry.jpeg" alt="Anggota" class="img-fluid">
+          <p><br>Ryann Chandiari / 00000092718</p>
+        </div>
+      </div>
+      <h3>That's all from us, see you again next time!</h3>
+    </div>
   </div>
 </div>
 
-<script>
-    // Retrieve user's name from localStorage
-var userName = localStorage.getItem("userName");
-if(userName !== null) {
-    document.getElementById("userName").innerText = userName; // Display user's name in the navbar
-} else {
-    // If user's name is not found, redirect back to index.html
-    window.location.href = "index.html";
-}
-$(document).ready(function(){
-  // Toggle showing more details
-  $("#toggleDetails").click(function(){
-    $("#moreDetails").slideToggle();
-    // Change button text based on visibility
-    $(this).text(function(i, text){
-      return text === "Show More" ? "Show Less" : "Show More";
-    });
-  });
-});
-</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#toggleDetails").click(function(){
+    $("#moreDetails").slideToggle();
+    var buttonText = $(this).text();
+    $(this).text(buttonText === "Show More" ? "Show Less" : "Show More");
+  });
+});
+</script>
 
 </body>
 </html>

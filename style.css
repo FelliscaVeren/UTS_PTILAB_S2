@@ -1,3 +1,32 @@
+.navbar-custom {
+    background-color: #000000; 
+    color: #ffffff; 
+}
+
+.money-img {
+    width: 50px; 
+    height: auto; 
+    float: left; 
+    margin-right: 10px;
+}
+
+.top-section {
+    background-image: url('images/background.jpg'); 
+    background-size: cover; 
+    color: #ffffff; 
+    padding: 100px 0; 
+    text-align: center; 
+}
+
+.features {
+    padding: 50px 0; 
+}
+
+.feature {
+    text-align: center; 
+}
+
+
 .about-us {
     width: 80%;
     margin: 0 auto;
@@ -13,12 +42,11 @@
     color: #666;
   }
 
-  /* Style for images */
   .about-us img {
-    max-width: 100px; /* Set maximum width for images */
-    height: 80px; /* Ensure aspect ratio is maintained */
-    display: block; /* Remove any inline spacing */
-    margin: 5px auto; /* Add margin to center the images */
+    max-width: 100px; 
+    height: 80px; 
+    display: block; 
+    margin: 5px auto; 
   }
   .money img {
     width: 10px;

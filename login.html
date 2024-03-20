@@ -9,14 +9,14 @@
 <link rel="stylesheet" href="style.css" />
 <style>
     .navbar-custom {
-        background-color: #000000; /* Warna latar belakang navbar hitam */
-        color: #ffffff; /* Warna teks pada navbar putih */
+        background-color: #000000; 
+        color: #ffffff; 
     }
 
     .money-img {
-    width: 200px; /* Lebar gambar */
-    height: auto; /* Tinggi gambar akan menyesuaikan proporsi aslinya */
-    margin: 0 325px; /* Memposisikan gambar di tengah secara horizontal */
+    width: 200px; 
+    height: auto; 
+    margin: 0 325px; 
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -27,9 +27,6 @@
     margin: 0 350px;
     
 }
-
-   
-
 </style>
 </head>
 
@@ -62,11 +59,9 @@
 <script>
 function saveUserData() {
     var userName = document.getElementById("modalnameInput").value;
-    if(userName.trim() !== "") { // Make sure the input is not empty
-        // Save the user's name to localStorage or sessionStorage for later use if needed
-        // For now, we'll just redirect the user to another page
-        localStorage.setItem("userName", userName); // Save user's name to localStorage
-        window.location.href = "homepage.html"; // Change the URL to the URL of your main_page.html
+    if(userName.trim() !== "") { 
+        localStorage.setItem("userName", userName); 
+        window.location.href = "homepage.html"; 
     } else {
         alert("Please enter your name.");
     }

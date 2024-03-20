@@ -12,31 +12,31 @@
 
 <style>
     .navbar-custom {
-        background-color: #000000; /* Warna latar belakang navbar hitam */
-        color: #ffffff; /* Warna teks pada navbar putih */
+        background-color: #000000; 
+        color: #ffffff; 
     }
 
     .money-img {
-        width: 50px; /* Lebar gambar */
-        height: auto; /* Tinggi gambar akan menyesuaikan proporsi aslinya */
-        float: left; /* Membuat gambar berada di sebelah kiri */
-        margin-right: 10px; /* Memberi sedikit ruang di sebelah kanan gambar */
+        width: 50px; 
+        height: auto; 
+        float: left; 
+        margin-right: 10px;
     }
 
     .top-section {
-        background-image: url('images/background.jpg'); /* Gambar latar belakang untuk bagian atas */
-        background-size: cover; /* Skala gambar sampai menutupi seluruh area */
-        color: #ffffff; /* Warna teks putih */
-        padding: 100px 0; /* Ruang atas dan bawah */
-        text-align: center; /* Teks rata tengah */
+        background-image: url('images/background.jpg'); 
+        background-size: cover; 
+        color: #ffffff; 
+        padding: 100px 0; 
+        text-align: center; 
     }
 
     .features {
-        padding: 50px 0; /* Ruang atas dan bawah */
+        padding: 50px 0; 
     }
 
     .feature {
-        text-align: center; /* Teks rata tengah */
+        text-align: center; 
     }
 </style>
 
@@ -115,12 +115,10 @@
 
 
 <script>
-    // Retrieve user's name from localStorage
     var userName = localStorage.getItem("userName");
     if(userName !== null) {
-        document.getElementById("userName").innerText = userName; // Display user's name in the navbar
+        document.getElementById("userName").innerText = userName; 
     } else {
-        // If user's name is not found, redirect back to index.html
         window.location.href = "index.html";
     }
 </script>

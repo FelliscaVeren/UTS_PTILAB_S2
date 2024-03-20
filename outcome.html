@@ -11,15 +11,15 @@
 
 <style>
     .navbar-custom {
-        background-color: #000000; /* Warna latar belakang navbar hitam */
-        color: #ffffff; /* Warna teks pada navbar putih */
+        background-color: #000000;
+        color: #ffffff;
     }
 
     .money-img {
-    width: 50px; /* Lebar gambar */
-    height: auto; /* Tinggi gambar akan menyesuaikan proporsi aslinya */
-    float: left; /* Membuat gambar berada di sebelah kiri */
-    margin-right: 10px; /* Memberi sedikit ruang di sebelah kanan gambar */
+    width: 50px;
+    height: auto;
+    float: left;
+    margin-right: 10px;
 }
 </style>
 </head>
@@ -50,17 +50,16 @@
             </ul>
         </div>
     </nav>
-
     <div class="container">
-        <h3>Your Outcome</h3>
-        <form onsubmit="event.preventDefault(); validateAndSubmit(this);">
+        <h3><br>Your Outcome</h3>
+        <form id="incomeForm" onsubmit="event.preventDefault(); validateAndSubmit(this);">
             <div class="form-group">
                 <label>Transaction Name</label>
-                <input type="text" id="transactionName" class="form-control" required>
+                <input type="text" id="Name" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Transaction Nominal</label>
-                <input type="text" id="transactionNominal" class="form-control" required>
+                <input type="text" id="Nominal" class="form-control" required>
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -75,43 +74,34 @@
                     <option value="Lainnya">Lainnya</option>
                 </select>
             </div>
+            <br>
             <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
-
-<script>
-    // Retrieve user's name from localStorage
-var userName = localStorage.getItem("userName");
-if(userName !== null) {
-    document.getElementById("userName").innerText = userName; // Display user's name in the navbar
-} else {
-    // If user's name is not found, redirect back to index.html
-    window.location.href = "index.html";
-}
-function validateAndSubmit() {
-    var transactionName = document.getElementById("transactionName").value;
-    var transactionNominal = document.getElementById("transactionNominal").value;
-    var transactionType = document.querySelector(".dropdown-menu .dropdown-item.active");
-
-    if (transactionName.trim() === "" || transactionNominal.trim() === "" || !transactionType) {
-        alert("Transaksi belum selesai, silakan lengkapi formulir!");
-    } else {
-        alert("Transaksi sukses!");
-        // Reset form after successful submission (optional)
-        document.getElementById("transactionName").value = "";
-        document.getElementById("transactionNominal").value = "";
-        $('.dropdown-menu a').removeClass('active');
-    }
-}
-
-$(document).ready(function() {
-    $('.dropdown-menu a').click(function() {
-        $(this).parents('.input-group-append').find('.btn').html($(this).text() + ' <span class="caret"></span>');
-        $(this).parents('.dropdown-menu').find('a').removeClass('active');
-        $(this).addClass('active');
-    });
-});
-</script>
-
+        </form>
+    </div>
+    
+    <script>
+        function validateAndSubmit(form) {
+            const Name = form.querySelector('#Name').value;
+            const Nominal = form.querySelector('#Nominal').value;
+            const Type = form.querySelector('#type').value;
+      
+            const formData = {
+                name: Name,
+                nominal: -parseFloat(Nominal),
+                type: Type
+            };
+      
+            if (typeof(Storage) !== "undefined") {
+                let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+                transactions.push(formData);
+                localStorage.setItem('transactions', JSON.stringify(transactions));
+                window.location.href = 'main.html';
+            } else {
+                console.error('localStorage is not supported');
+            }
+        }
+      </script>
+      
+            
 </body>
 </html>
