@@ -20,3 +20,57 @@
     display: block; /* Remove any inline spacing */
     margin: 5px auto; /* Add margin to center the images */
   }
+  .money img {
+    width: 10px;
+    height: 10px;
+}
+
+#banner {
+    width: 1800px;
+    height: 800px;
+    margin: 0 80px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: 45px;
+}
+
+#konten {
+    width: 1600px;
+    height: 400px;
+    margin-left: 130px;
+    margin-bottom: 100px;
+}
+
+#highlight {
+    margin-top: 40px;
+    margin-left: 130px;
+    margin-right: 140px;
+    
+}
+
+.col-md p {
+    text-align: justify;
+}
+
+.col-md h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.col-md p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+}
+
+.row p {
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.row h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: xx-large;
+
+}

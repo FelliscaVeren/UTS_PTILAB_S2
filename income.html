@@ -29,7 +29,7 @@
         <div class="money">
             <img src="images/money.png" class="money-img">
         </div>
-        <a class="navbar-brand" href="#">Hello, <span id="userName"></span></a>
+        <a class="navbar-brand" href="main.html">Hello, <span id="userName"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,51 +51,32 @@
         </div>
     </nav>
 
-<div class="container">
-    <h3>Your Income</h3>
-    <table class="table">
-        <thead>
-            <tr>
-                <th colspan="2">Transaction Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <input type="text" id="transactionName" class="form-control mb-2 animated fadeIn">
-                </td>
-            </tr>
-            <tr>
-                <th colspan="2">Transaction Nominal</th>
-            </tr>
-            <tr>
-                <td>
-                    <input type="text" id="transactionNominal" class="form-control mb-2 animated fadeIn">
-                </td>
-            </tr>
-            <tr>
-                <th colspan="2">Transaction Type</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="input-group">
-                        <input type="text" class="form-control" aria-label="Text input with segmenteddropdown button">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Makan</a>
-                              <a class="dropdown-item" href="#">Main</a>
-                                <a class="dropdown-item" href="#">Edukasi</a>
-                                <a class="dropdown-item" href="#">Belanja</a>
-                                <a class="dropdown-item" href="#">Lainnya</a>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <button type="button" class="btn btn-primary animated fadeIn" onclick="validateAndSubmit()">Submit</button>
+    <div class="container">
+        <h3>Your Outcome</h3>
+        <form onsubmit="event.preventDefault(); validateAndSubmit(this);">
+            <div class="form-group">
+                <label>Transaction Name</label>
+                <input type="text" id="transactionName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Transaction Nominal</label>
+                <input type="text" id="transactionNominal" class="form-control" required>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="type">Transaction Type</label>
+                </div>
+                <select id="type" class="custom-select" required>
+                    <option selected>Choose...</option>
+                    <option value="Makan">Makan</option>
+                    <option value="Main">Main</option>
+                    <option value="Edukasi">Edukasi</option>
+                    <option value="Belanja">Belanja</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </div>
 
 <script>
