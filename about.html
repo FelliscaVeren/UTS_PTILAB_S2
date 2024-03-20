@@ -33,7 +33,7 @@
     color: #333;
     font-family: 'Times New Roman', Times, serif;
   }
-  
+
   .about-us p {
     color: #666;
   }
@@ -48,11 +48,21 @@
     font-size: larger;
     font-family: 'Times New Roman', Times, serif;
   }
+
+  .money-img {
+    width: 50px; /* Lebar gambar */
+    height: auto; /* Tinggi gambar akan menyesuaikan proporsi aslinya */
+    float: left; /* Membuat gambar berada di sebelah kiri */
+    margin-right: 10px; /* Memberi sedikit ruang di sebelah kanan gambar */
+}
 </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark navbar-custom">
+        <div class="money">
+            <img src="images/money.png" class="money-img">
+        </div>
         <a class="navbar-brand" href="#">Hello, <span id="userName"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -96,6 +106,7 @@
     <p>Anggota : Fellisca Veren</p>
     <img src="images/ry.jpeg">
     <p>Anggota : Ryann Chandiari</p>
+    <h3>Sekian dari kami, see you!</h3>
   </div>
 </div>
 

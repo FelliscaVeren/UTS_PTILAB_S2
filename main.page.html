@@ -12,11 +12,21 @@
         background-color: #000000; /* Warna latar belakang navbar hitam */
         color: #ffffff; /* Warna teks pada navbar putih */
     }
+
+    .money-img {
+    width: 50px; /* Lebar gambar */
+    height: auto; /* Tinggi gambar akan menyesuaikan proporsi aslinya */
+    float: left; /* Membuat gambar berada di sebelah kiri */
+    margin-right: 10px; /* Memberi sedikit ruang di sebelah kanan gambar */
+}
 </style>
 </head>
 
 <body>
 <nav class="navbar navbar-expand-md navbar-dark navbar-custom">
+    <div class="money">
+        <img src="images/money.png" class="money-img">
+    </div>
     <a class="navbar-brand" href="#">Hello, <span id="userName"></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -40,7 +50,7 @@
 </nav>
 
 <div class="container">
-    <h2>Welcome to Main Page</h2>
+    <h2>Welcome to Money Tracker</h2>
     <!-- Your main content goes here -->
 </div>
 

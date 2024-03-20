@@ -14,11 +14,21 @@
         background-color: #000000; /* Warna latar belakang navbar hitam */
         color: #ffffff; /* Warna teks pada navbar putih */
     }
+
+    .money-img {
+    width: 50px; /* Lebar gambar */
+    height: auto; /* Tinggi gambar akan menyesuaikan proporsi aslinya */
+    float: left; /* Membuat gambar berada di sebelah kiri */
+    margin-right: 10px; /* Memberi sedikit ruang di sebelah kanan gambar */
+}
 </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark navbar-custom">
+        <div class="money">
+            <img src="images/money.png" class="money-img">
+        </div>
         <a class="navbar-brand" href="#">Hello, <span id="userName"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -40,9 +50,7 @@
             </ul>
         </div>
     </nav>
-        </button>
-        
-    
+
 <div class="container">
     <h3>Your Income</h3>
     <table class="table">
@@ -76,7 +84,7 @@
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#">Makan</a>
-                                <a class="dropdown-item" href="#">Main</a>
+                              <a class="dropdown-item" href="#">Main</a>
                                 <a class="dropdown-item" href="#">Edukasi</a>
                                 <a class="dropdown-item" href="#">Belanja</a>
                                 <a class="dropdown-item" href="#">Lainnya</a>
@@ -92,39 +100,39 @@
 
 <script>
     // Retrieve user's name from localStorage
-var userName = localStorage.getItem("userName");
-if(userName !== null) {
-    document.getElementById("userName").innerText = userName; // Display user's name in the navbar
-} else {
-    // If user's name is not found, redirect back to index.html
-    window.location.href = "index.html";
-}
-function validateAndSubmit() {
-    var transactionName = document.getElementById("transactionName").value;
-    var transactionNominal = document.getElementById("transactionNominal").value;
-    var transactionType = document.querySelector(".dropdown-menu .dropdown-item.active");
-
-    if (transactionName.trim() === "" || transactionNominal.trim() === "" || !transactionType) {
-        alert("Transaksi belum selesai, silakan lengkapi formulir!");
+    var userName = localStorage.getItem("userName");
+    if(userName !== null) {
+        document.getElementById("userName").innerText = userName; // Display user's name in the navbar
     } else {
-        alert("Transaksi sukses!");
-        // Reset form after successful submission (optional)
-        document.getElementById("transactionName").value = "";
-        document.getElementById("transactionNominal").value = "";
-        $('.dropdown-menu a').removeClass('active');
+        // If user's name is not found, redirect back to index.html
+        window.location.href = "index.html";
     }
-}
 
-$(document).ready(function() {
-    $('.dropdown-menu a').click(function() {
-        $(this).parents('.input-group-append').find('.btn').html($(this).text() + ' <span class="caret"></span>');
-        $(this).parents('.dropdown-menu').find('a').removeClass('active');
-        $(this).addClass('active');
+    function validateAndSubmit() {
+        var transactionName = document.getElementById("transactionName").value;
+        var transactionNominal = document.getElementById("transactionNominal").value;
+        var transactionType = $('.dropdown-menu .dropdown-item.active').text();
+
+        if (transactionName.trim() === "" || transactionNominal.trim() === "" || !transactionType) {
+            alert("Transaksi belum selesai, silakan lengkapi formulir!");
+        } else {
+            alert("Transaksi sukses!");
+            // Reset form after successful submission (optional)
+            document.getElementById("transactionName").value = "";
+            document.getElementById("transactionNominal").value = "";
+            $('.dropdown-menu a').removeClass('active');
+        }
+    }
+
+    $(document).ready(function() {
+        $('.dropdown-menu a').click(function() {
+            var selectedText = $(this).text();
+            $(this).closest('.input-group-append').find('.btn').text(selectedText);
+            $(this).closest('.dropdown-menu').find('a').removeClass('active');
+            $(this).addClass('active');
+        });
     });
-});
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
