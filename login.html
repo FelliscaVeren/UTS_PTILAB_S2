@@ -7,7 +7,6 @@
     <title>Money Tracker</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="style.css" />
     <style>
         .navbar-custom {
             background-color: #000000;
@@ -17,16 +16,46 @@
         .money-img {
             width: 200px;
             height: auto;
-            margin: 0 325px;
-            margin-bottom: 20px;
-            margin-top: 20px;
+            margin: 20px auto;
+            display: block;
         }
 
-        .container h1 {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: large;
-            margin: 0 350px;
+        .container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+            width: 100%;
+            background-color: #f7f7f7;
+            border: 2px solid #e68f8f;
+        }
+
+        .btn-success {
+            width: 100%;
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-success:hover {
+            border-color: #1e7e34;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                padding: 40px;
+            }
         }
     </style>
 </head>
@@ -41,17 +70,16 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th colspan="2">Input your name</th>
+                    <th colspan="2">Masukkan Username</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
-                        <input type="text" id="modalnameInput" class="form-control mb-2 animated fadeIn"
-                            placeholder="Name">
+                        <input type="text" id="modalnameInput" class="form-control animated fadeIn" placeholder="username">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-primary animated fadeIn"
+                        <button type="button" class="btn btn-success animated fadeIn"
                             onclick="saveUserData()">Submit</button>
                     </td>
                 </tr>

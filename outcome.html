@@ -60,7 +60,7 @@
         <div class="money">
             <img src="images/money.png" class="money-img">
         </div>
-        <a class="navbar-brand" href="main.html">Hello, <span id="userName"></span></a>
+        <a class="navbar-brand" href="main.html">Hello, <span id="userName"></span> !</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -117,16 +117,22 @@
 
     <script>
         function validateAndSubmit(form) {
-            const Name = form.querySelector('#Name').value;
-            const Nominal = form.querySelector('#Nominal').value;
-            const Type = form.querySelector('#type').value;
+            const name = form.querySelector('#Name').value;
+            let nominal = form.querySelector('#Nominal').value;
+            const type = form.querySelector('#type').value;
+
+            if (!/^\d+$/.test(nominal)) {
+                alert('Masukkan angka tanpa koma atau titik.');
+                return;
+            }
+
+            nominal = parseFloat(nominal);
 
             const formData = {
-                name: Name,
-                nominal: -parseFloat(Nominal),
-                type: Type
+                name: name,
+                nominal: -nominal,
+                type: type
             };
-
             if (typeof (Storage) !== "undefined") {
                 let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
                 transactions.push(formData);
@@ -144,8 +150,3 @@
             window.location.href = "main.html";
         }
     </script>
-
-
-</body>
-
-</html>

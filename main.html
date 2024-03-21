@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Tracker</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <style>
         .navbar-custom {
             background-color: #000000;
@@ -52,6 +48,40 @@
             color: black;
             background-color: rgb(249, 234, 216);
         }
+
+        .balance-box {
+            border: 2px solid #28a745;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .transaction-box {
+            border: 2px solid #dc3545;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .transaction-box h5 {
+            margin-top: 0;
+        }
+
+        .transaction-box p {
+            margin-bottom: 0;
+        }
+
+        .income {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .outcome {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 
@@ -60,7 +90,7 @@
         <div class="money">
             <img src="images/money.png" class="money-img">
         </div>
-        <a class="navbar-brand" href="main.html">Hello, <span id="userName"></span></a>
+        <a class="navbar-brand" href="main.html">Hello, <span id="userName"></span> !</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -85,88 +115,56 @@
         </div>
     </nav>
 
-    <script>
-        function validateAndSubmit(form) {
-            const Name = form.querySelector('#Name').value;
-            const Nominal = parseFloat(form.querySelector('#Nominal').value.replace(',', '.'));
-            const Type = form.querySelector('#type').value;
-
-            const formData = {
-                name: Name,
-                nominal: Nominal,
-                type: Type
-            };
-
-            if (typeof (Storage) !== "undefined") {
-                let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-                transactions.push(formData);
-                localStorage.setItem('transactions', JSON.stringify(transactions));
-                alert('Yeay, Transaksi Sukses!');
-                window.location.href = 'main.html';
-            } else {
-                console.error('localStorage is not supported');
-            }
-        }
-
-    </script>
-    </div>
+    <br>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="box">
-                    <h3><br>Transaction Details</h3>
-                    <table id="transactionTable" class="table">
-                        <thead>
-                            <tr>
-                                <th>Transaction Name</th>
-                                <th>Transaction Nominal</th>
-                                <th>Transaction Type</th>
-                            </tr>
-                        </thead>
-                        <tbody id="transactionDetails">
-                        </tbody>
-                    </table>
+                <div class="balance-box">
+                    <h3>Balance</h3>
+                    <div id="balanceDetails"></div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="box">
-                    <h3><br>Balance</h3>
-                    <div id="balanceDetails"></div>
+                <div class="transaction-box">
+                    <h3>Transaction Details</h3>
+                    <div id="transactionDetails"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-
         window.onload = function () {
             const userName = localStorage.getItem('userName');
             if (userName) {
                 document.getElementById('userName').textContent = userName;
             }
-        };
-        window.onload = function () {
+
             if (typeof (Storage) !== "undefined") {
                 const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
                 const transactionDetails = document.getElementById('transactionDetails');
                 let totalAmount = 0;
                 transactions.forEach(transaction => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                  <td>${transaction.name}</td>
-                  <td>${transaction.nominal.toLocaleString()}</td>
-                  <td>${transaction.type}</td>
-              `;
-                    transactionDetails.appendChild(row);
+                    const transactionBox = document.createElement('div');
+                    transactionBox.className = 'transaction-box ' + transaction.type.toLowerCase();
+                    transactionBox.innerHTML = `
+                 <h5>${transaction.name}</h5>
+                <p>${transaction.type}</p>
+                 <p>${transaction.nominal.toLocaleString()}</p>
+                `;
+                    transactionDetails.appendChild(transactionBox);
                     totalAmount += parseFloat(transaction.nominal);
                 });
+
                 const balanceDetails = document.getElementById('balanceDetails');
                 balanceDetails.innerHTML = `Total Balance: ${totalAmount
-                    .toFixed(2).replace(/\d(?=(\d{3})+.)/g, '$&,')}`;
+                    .toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+
             } else {
                 console.error('localStorage is not supported');
             }
         };
+
 
         var userName = localStorage.getItem("userName");
         if (userName !== null) {
@@ -175,7 +173,6 @@
             window.location.href = "main.html";
         }
     </script>
-
 </body>
 
 </html>
