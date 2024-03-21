@@ -1,74 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Money Tracker</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-<link rel="stylesheet" href="style.css" />
-<style>
-    .navbar-custom {
-        background-color: #000000; 
-        color: #ffffff; 
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .navbar-custom {
+            background-color: #000000;
+            color: #ffffff;
+        }
 
-    .money-img {
-    width: 200px; 
-    height: auto; 
-    margin: 0 325px; 
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
+        .money-img {
+            width: 200px;
+            height: auto;
+            margin: 0 325px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
 
-.container h1{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: large;
-    margin: 0 350px;
-    
-}
-</style>
+        .container h1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: large;
+            margin: 0 350px;
+
+        }
+    </style>
 </head>
 
 <body>
- 
-<div class="container">
-    <h1>MONEY TRACKER</h1>
-    <div class="money">
-        <img src="images/money.png" class="money-img">
+
+    <div class="container">
+        <h1>MONEY TRACKER</h1>
+        <div class="money">
+            <img src="images/money.png" class="money-img">
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="2">Input your name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" id="modalnameInput" class="form-control mb-2 animated fadeIn"
+                            placeholder="Name">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary animated fadeIn"
+                            onclick="saveUserData()">Submit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th colspan="2">Input your name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <input type="text" id="modalnameInput" class="form-control mb-2 animated fadeIn" placeholder="Name">
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary animated fadeIn" onclick="saveUserData()">Submit</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
 
-<script>
-function saveUserData() {
-    var userName = document.getElementById("modalnameInput").value;
-    if(userName.trim() !== "") { 
-        localStorage.setItem("userName", userName); 
-        window.location.href = "homepage.html"; 
-    } else {
-        alert("Please enter your name.");
-    }
-}
-</script>
-
+    <script>
+        function saveUserData() {
+            var userName = document.getElementById("modalnameInput").value;
+            if (userName.trim() !== "") {
+                localStorage.setItem("userName", userName);
+                window.location.href = "main.html";
+            } else {
+                alert("Please enter your name.");
+            }
+        }
+    </script>
 </body>
+
 </html>
-
-

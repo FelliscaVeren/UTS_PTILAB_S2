@@ -1,27 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Money Tracker</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<style>
-    .navbar-custom {
-        background-color: #000000;
-        color: #ffffff;
-    }
+    <style>
+        .navbar-custom {
+            background-color: #000000;
+            color: #ffffff;
+        }
 
-    .money-img {
-    width: 50px;
-    height: auto;
-    float: left;
-    margin-right: 10px;
-}
-</style>
+        .money-img {
+            width: 50px;
+            height: auto;
+            float: left;
+            margin-right: 10px;
+        }
+
+        input[type="text"] {
+            border: 1.5px solid #393232;
+            border-radius: 5px;
+            padding: 8px;
+            background-color: rgb(249, 234, 216);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"]:focus {
+            border-color: #f1a99e;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .input-group-text {
+            background-color: rgb(250, 247, 243);
+            border-radius: 2px;
+            border: 1.5px solid #393232;
+        }
+
+        .custom-select {
+            color: #000000;
+            background-color: white;
+            border: 1.5px solid #393232;
+        }
+
+        select option {
+            color: black;
+            background-color: rgb(249, 234, 216);
+        }
+    </style>
 </head>
 
 <body>
@@ -45,13 +76,18 @@
                     <a class="nav-link" href="outcome.html">Outcome</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="theweb.html">The Web</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="about.html">About Us</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container">
-        <h3><br>Your Outcome</h3>
+        <div class="outcome-text text-center">
+            <h5><br>Your Outcome</h5>
+        </div>
         <form id="incomeForm" onsubmit="event.preventDefault(); validateAndSubmit(this);">
             <div class="form-group">
                 <label>Transaction Name</label>
@@ -75,23 +111,23 @@
                 </select>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-danger w-25 mx-auto d-block">Submit</button>
         </form>
     </div>
-    
+
     <script>
         function validateAndSubmit(form) {
             const Name = form.querySelector('#Name').value;
             const Nominal = form.querySelector('#Nominal').value;
             const Type = form.querySelector('#type').value;
-      
+
             const formData = {
                 name: Name,
                 nominal: -parseFloat(Nominal),
                 type: Type
             };
-      
-            if (typeof(Storage) !== "undefined") {
+
+            if (typeof (Storage) !== "undefined") {
                 let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
                 transactions.push(formData);
                 localStorage.setItem('transactions', JSON.stringify(transactions));
@@ -100,8 +136,16 @@
                 console.error('localStorage is not supported');
             }
         }
-      </script>
-      
-            
+
+        var userName = localStorage.getItem("userName");
+        if (userName !== null) {
+            document.getElementById("userName").innerText = userName;
+        } else {
+            window.location.href = "main.html";
+        }
+    </script>
+
+
 </body>
+
 </html>
