@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Money Tracker - Income</title>
+    <title>Money Tracker</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -151,9 +151,9 @@
                     const transactionBox = document.createElement('div');
                     transactionBox.className = 'transaction-box ' + transaction.type.toLowerCase();
                     transactionBox.innerHTML = `
-                 <h5>${transaction.name}</h5>
-                <p>${transaction.type}</p>
-                 <p>${transaction.nominal.toLocaleString()}</p>
+                    <h5>${transaction.name}</h5>
+                    <p>${transaction.type}</p>
+                    <p>${transaction.nominal.toLocaleString()}</p>
                 `;
                     transactionDetails.appendChild(transactionBox);
                     totalAmount += parseFloat(transaction.nominal);
@@ -164,7 +164,7 @@
                     .toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
 
             } else {
-                console.error('localStorage is not supported');
+                console.error('Lokal memori tidak bisa diakses');
             }
         };
 
