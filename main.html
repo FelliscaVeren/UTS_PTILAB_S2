@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Money Tracker</title>
+    <title>Money Tracker - Income</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <style>
+    <style>
         .navbar-custom {
             background-color: #000000;
             color: #ffffff;
@@ -42,7 +42,7 @@
         }
 
         .custom-select {
-            color: #000000;
+            color: #171212;
             background-color: white;
             border: 1.5px solid #393232;
         }
@@ -59,7 +59,7 @@
         }
 
         .transaction-box {
-            border: 2px solid #dc3545;
+            border: 2px solid #f66573;
             padding: 20px;
             margin-bottom: 20px;
         }
@@ -72,18 +72,12 @@
             margin-bottom: 0;
         }
 
-        .income {
-            background-color: #28a745;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
+        .positive-nominal {
+            background-color: #77ca8a;
         }
 
-        .outcome {
-            background-color: #dc3545;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
+        .negative-nominal {
+            background-color: rgb(241, 164, 164);
         }
     </style>
 </head>
@@ -96,7 +90,7 @@
         <a class="navbar-brand" href="main.html">Hello, <span id="userName"></span> !</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
-        </button>      
+        </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -117,7 +111,6 @@
             </ul>
         </div>
     </nav>
-
     <br>
     <div class="container">
         <div class="row">
@@ -149,19 +142,19 @@
                 let totalAmount = 0;
                 transactions.forEach(transaction => {
                     const transactionBox = document.createElement('div');
-                    transactionBox.className = 'transaction-box ' + transaction.type.toLowerCase();
+                    transactionBox.className = 'transaction-box ' + transaction.type.toLowerCase() + ' ' + (transaction.nominal > 0 ? 'positive-nominal' : 'negative-nominal');
                     transactionBox.innerHTML = `
-                    <h5>${transaction.name}</h5>
-                    <p>${transaction.type}</p>
-                    <p>${transaction.nominal.toLocaleString()}</p>
+                <h5>${transaction.name}</h5>
+                <p>${transaction.type}</p>
+                <p>${transaction.nominal.toLocaleString()}</p>
                 `;
                     transactionDetails.appendChild(transactionBox);
                     totalAmount += parseFloat(transaction.nominal);
                 });
 
                 const balanceDetails = document.getElementById('balanceDetails');
-                balanceDetails.innerHTML = `Total Balance: ${totalAmount
-                    .toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+                balanceDetails.innerHTML = `Total Balance : ${totalAmount
+                    .toFixed(2)}`;
 
             } else {
                 console.error('Lokal memori tidak bisa diakses');

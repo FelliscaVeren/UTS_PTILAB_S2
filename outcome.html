@@ -179,9 +179,10 @@
                 let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
                 transactions.push(formData);
                 localStorage.setItem('transactions', JSON.stringify(transactions));
+                alert('Yeay, Transaksi Sukses!');
                 window.location.href = 'main.html';
             } else {
-                console.error('Lokal memori tidak bisa diakses');
+                console.error('gagal transaksi');
             }
         }
 

@@ -1,0 +1,11 @@
+Link Bootstrap : https://github.com/FelliscaVeren/UTS_PTILAB_S2
+
+Nama Kelompok dan NIM : 
+- Audrey Christabelle Hakim / 00000093142
+- Devin Wongosari / 00000093438
+- Fellisca Veren / 00000092385
+- Ryann Chandiari / 00000092718
+
+Program dapat dimulai (go live) dari file login.html
+
+Link Drive Video Demonstration : https://drive.google.com/file/d/1JYQleAF_OgkozTZuw4pt23K6Moqi15gQ/view?usp=sharing
